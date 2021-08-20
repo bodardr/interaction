@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using DG.Tweening;
+using UnityEngine;
 
+[AddComponentMenu("Interaction/Prompts/Animated Interaction Prompt")]
 class AnimatedInteractionPrompt : InteractionPrompt
 {
     public override IEnumerator Show()

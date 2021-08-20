@@ -1,6 +1,6 @@
 {
-  "name": "com.bodardr.interaction",
-  "rootNamespace": "Bodardr.Interaction",
+  "name": "com.bodardr.interaction.runtime",
+  "rootNamespace": "Bodardr.Interaction.Runtime",
   "references": [
     "Unity.TextMeshPro",
     "Unity.InputSystem",

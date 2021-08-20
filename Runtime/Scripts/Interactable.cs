@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Bodardr.ObjectPooling;
 using UnityEngine;
 
+[AddComponentMenu("Interaction/Interactable")]
 public class Interactable : MonoBehaviour
 {
     [SerializeField]
-    private PromptPool promptPool;
+    private PrefabPool promptPool;
 
     [SerializeField]
     private List<InteractionElement> interactions;
@@ -26,8 +28,8 @@ public class Interactable : MonoBehaviour
 
     private Interactor interactor;
 
-    private PoolableObject<InteractionPrompt> primaryPrompt;
-    private PoolableObject<InteractionPrompt> secondaryPrompt;
+    private PoolableComponent<InteractionPrompt> primaryPrompt;
+    private PoolableComponent<InteractionPrompt> secondaryPrompt;
 
     private Coroutine updateCoroutine;
 
@@ -106,9 +108,9 @@ public class Interactable : MonoBehaviour
         if (currentPrompt == null)
         {
             if (isPrimary)
-                currentPrompt = primaryPrompt = promptPool.Get();
+                currentPrompt = primaryPrompt = promptPool.Get<InteractionPrompt>();
             else
-                currentPrompt = secondaryPrompt = promptPool.Get();
+                currentPrompt = secondaryPrompt = promptPool.Get<InteractionPrompt>();
 
             StartCoroutine(currentPrompt.Content.Show());
         }

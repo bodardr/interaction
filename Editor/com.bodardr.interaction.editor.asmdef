@@ -1,0 +1,22 @@
+{
+  "name": "com.bodardr.interaction.editor",
+  "rootNamespace": "Bodardr.Interaction.Editor",
+  "references": [
+    "Unity.TextMeshPro",
+    "Unity.InputSystem",
+    "com.bodardr.pooling",
+    "com.bodardr.utility.runtime",
+    "com.bodardr.interaction.runtime"
+  ],
+  "includePlatforms": [
+    "Editor"
+  ],
+  "excludePlatforms": [],
+  "allowUnsafeCode": false,
+  "overrideReferences": false,
+  "precompiledReferences": [],
+  "autoReferenced": true,
+  "defineConstraints": [],
+  "versionDefines": [],
+  "noEngineReferences": false
+}

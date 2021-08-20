@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
+[AddComponentMenu("Interaction/Interactors/Interactor", 0)]
 public abstract class Interactor : MonoBehaviour
 {
     [SerializeField]

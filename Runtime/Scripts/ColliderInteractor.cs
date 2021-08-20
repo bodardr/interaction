@@ -1,6 +1,6 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
+[AddComponentMenu("Interaction/Interactors/Collider Interactor")]
 class ColliderInteractor : Interactor
 {
     private void Update()

@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[AddComponentMenu("Interaction/Prompts/Interaction Prompt")]
 public class InteractionPrompt : MonoBehaviour
 {
     [SerializeField]

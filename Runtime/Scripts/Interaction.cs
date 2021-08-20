@@ -1,6 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
+[AddComponentMenu("Interaction/Interaction")]
 public abstract class Interaction : MonoBehaviour
 {
     protected Interactor interactor;
