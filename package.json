@@ -1,11 +1,12 @@
 {
   "name": "com.bodardr.interaction",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "displayName": "Interaction System",
   "description": "A customizable interaction system",
   "dependencies": {
     "com.unity.textmeshpro": "2.0.0",
-    "com.unity.inputsystem": "1.0.1"
+    "com.unity.inputsystem": "1.0.1",
+    "com.bodardr.pooling": "0.0.1"
   },
   "author": {
     "name": "Roman B.",
