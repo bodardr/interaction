@@ -1,103 +1,61 @@
 using System.Collections;
+using System.ComponentModel;
+using Bodardr.Databinding.Runtime;
+using Bodardr.UI;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(UIView))]
 [AddComponentMenu("Interaction/Prompts/Interaction Prompt")]
-public class InteractionPrompt : MonoBehaviour
+public class InteractionPrompt : MonoBehaviour, INotifyPropertyChanged
 {
-    [SerializeField]
-    private Image controlImage = null;
-
-    [SerializeField]
-    private TextMeshProUGUI promptText = null;
-
-    [SerializeField]
-    private Sprite keyboardIcon = null;
-
-    [SerializeField]
-    private Sprite gamepadIcon = null;
-
-    private Canvas canvas;
-
-    private ContentSizeFitter contentSizeFitter;
+    private Transform target;
     private Interaction interaction;
-    private ScreenSpaceUI screenSpaceUI;
 
-    protected bool IsHidden { get; private set; } = true;
+    private UIView uiView;
+    protected bool IsHidden => uiView.IsHidden;
 
     public Transform Target
     {
-        set => screenSpaceUI.Target = value;
+        get => target;
+        set
+        {
+            target = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Target)));
+        }
     }
+
+    public Interaction Interaction
+    {
+        get => interaction;
+        set
+        {
+            interaction = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Interaction)));
+        }
+    }
+
+    public event PropertyChangedEventHandler PropertyChanged;
 
     private void Awake()
     {
-        contentSizeFitter = GetComponent<ContentSizeFitter>();
-        canvas = GetComponent<Canvas>();
-        screenSpaceUI = GetComponent<ScreenSpaceUI>();
+        uiView = GetComponent<UIView>();
     }
 
-    public void UpdateScheme(bool isGamepad)
+    public void Show()
     {
-        controlImage.sprite = isGamepad ? gamepadIcon : keyboardIcon;
+        uiView.Show();
     }
 
-    private void UpdateText(string newText)
+    public void Hide()
     {
-        StartCoroutine(UpdateLayout());
-        promptText.text = newText;
-    }
-
-    public virtual IEnumerator Show()
-    {
-        if (!IsHidden)
-            yield return null;
-
-        IsHidden = false;
-        gameObject.SetActive(true);
-
-        yield return null;
-    }
-
-    public virtual IEnumerator Hide()
-    {
-        if (IsHidden)
-            yield return null;
-
-        IsHidden = true;
-        gameObject.SetActive(false);
-
-        yield return null;
-    }
-
-    private IEnumerator UpdateLayout()
-    {
-        contentSizeFitter.enabled = false;
-        yield return null;
-        contentSizeFitter.enabled = true;
-    }
-
-    public void Initialize(Interaction interaction)
-    {
-        UpdateText(interaction.Text);
-        interaction.OnTextUpdated += UpdateText;
+        uiView.Hide();
     }
 
     public void Clear()
     {
         Target = null;
-        interaction.OnTextUpdated -= UpdateText;
-        interaction = null;
-    }
-
-    public void SetOffset(Vector2 offset)
-    {
-        screenSpaceUI.SetOffset(offset);
-    }
-
-    public void SetOffset(float offsetX, float offsetY)
-    {
-        SetOffset(new Vector2(offsetX, offsetY));
+        Interaction = null;
     }
 }

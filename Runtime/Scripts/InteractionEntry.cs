@@ -2,7 +2,7 @@
 
 
 [Serializable]
-public class InteractionElement
+public class InteractionEntry
 {
     public Interaction interaction;
     public int weight;

@@ -1,128 +1,88 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Bodardr.ObjectPooling;
+using Bodardr.UI.Runtime;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 [AddComponentMenu("Interaction/Interactable")]
 public class Interactable : MonoBehaviour
 {
-    [SerializeField]
-    private PrefabPool promptPool;
+    private Interactor interactor;
+    private SmartCoroutine updateCoroutine;
 
     [SerializeField]
-    private List<InteractionElement> interactions;
+    private List<InteractionEntry> primaryInteractions;
 
     [SerializeField]
-    private List<InteractionElement> secondaryInteractions;
+    private List<InteractionEntry> secondaryInteractions;
 
+    [FormerlySerializedAs("customPrimaryTarget")]
     [Header("Targets")]
     [SerializeField]
-    private Transform customPrimaryTarget;
+    private Transform customTarget;
 
     [SerializeField]
-    private Transform customSecondaryTarget;
+    private bool customUpdateFrequency = false;
 
-    [Tooltip("Offset in screen-space (0,1)")]
+    [ShowIf(nameof(customUpdateFrequency))]
     [SerializeField]
-    private float offsetY = 0.05f;
+    private float updateFrequency = 0.3f;
 
-    private Interactor interactor;
+    public Transform CustomTarget => customTarget;
 
-    private PoolableComponent<InteractionPrompt> primaryPrompt;
-    private PoolableComponent<InteractionPrompt> secondaryPrompt;
-
-    private Coroutine updateCoroutine;
-
-
-    public void Enable(Interactor interactor)
+    private void Awake()
     {
-        this.interactor = interactor;
-        updateCoroutine = StartCoroutine(UpdateInteractionsCoroutine());
+        updateCoroutine = new SmartCoroutine(this, UpdateInteractionsCoroutine);
     }
 
-    public void Disable()
-    {
-        if (updateCoroutine != null)
-            StopCoroutine(updateCoroutine);
-
-        primaryPrompt?.Release();
-        secondaryPrompt?.Release();
-
-        primaryPrompt = null;
-        secondaryPrompt = null;
-
-        interactor = null;
-    }
-
-    /// <summary>
-    /// Coroutine that updates interactions every 0.3s.
-    /// </summary>
-    /// <returns>The coroutine.</returns>
     private IEnumerator UpdateInteractionsCoroutine()
     {
+        var waitByUpdateFrequency = new WaitForSeconds(updateFrequency);
         while (isActiveAndEnabled)
         {
-            interactions.Sort((x, y) => x.weight.CompareTo(y.weight));
+            primaryInteractions.Sort((x, y) => x.weight.CompareTo(y.weight));
             secondaryInteractions.Sort((x, y) => x.weight.CompareTo(y.weight));
 
-            foreach (var i in interactions)
+            InteractionEntry primary = null;
+            foreach (var x in primaryInteractions)
             {
-                if (!i.interaction.CanInteract(interactor))
+                if (!x.interaction.CanInteract(interactor))
                     continue;
 
-                SetInteraction(true, i.interaction);
+                primary = x;
                 break;
             }
 
-            foreach (var i in secondaryInteractions)
+            InteractionEntry secondary = null;
+            foreach (var x in secondaryInteractions)
             {
-                if (!i.interaction.CanInteract(interactor))
+                if (!x.interaction.CanInteract(interactor))
                     continue;
 
-                SetInteraction(false, i.interaction);
+                secondary = x;
                 break;
             }
 
-            yield return new WaitForSeconds(0.3f);
+            interactor.Primary = primary?.interaction;
+            interactor.Secondary = secondary?.interaction;
+
+            yield return waitByUpdateFrequency;
         }
 
         updateCoroutine = null;
     }
 
-    private void SetInteraction(bool isPrimary, Interaction newInteraction)
+    public void Enable(Interactor interactor)
     {
-        var currentPrompt = isPrimary ? primaryPrompt : secondaryPrompt;
+        this.interactor = interactor;
+        updateCoroutine.Start();
+    }
 
-        if (newInteraction == null)
-        {
-            currentPrompt?.Release();
+    public void Disable()
+    {
+        updateCoroutine.Stop();
 
-            if (isPrimary)
-                primaryPrompt = null;
-            else
-                secondaryPrompt = null;
-
-            return;
-        }
-
-        if (currentPrompt == null)
-        {
-            if (isPrimary)
-                currentPrompt = primaryPrompt = promptPool.Get<InteractionPrompt>();
-            else
-                currentPrompt = secondaryPrompt = promptPool.Get<InteractionPrompt>();
-
-            StartCoroutine(currentPrompt.Content.Show());
-        }
-
-        currentPrompt.Content.Initialize(newInteraction);
-        var customTarget = isPrimary ? customPrimaryTarget : customSecondaryTarget;
-        currentPrompt.Content.Target = customTarget ? customTarget : transform;
-        currentPrompt.Content.SetOffset(0, isPrimary ? offsetY : -offsetY);
-
-        if (isPrimary)
-            interactor.Primary = newInteraction;
-        else
-            interactor.Secondary = newInteraction;
+        interactor.Primary = null;
+        interactor.Secondary = null;
     }
 }

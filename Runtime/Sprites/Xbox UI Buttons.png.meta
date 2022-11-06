@@ -9,7 +9,7 @@ TextureImporter:
       213: 3032648595230721206
     second: A Button
   externalObjects: {}
-  serializedVersion: 11
+  serializedVersion: 12
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -30,6 +30,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -38,9 +39,9 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: -1
+    filterMode: 1
     aniso: 2
-    mipBias: -100
+    mipBias: 0
     wrapU: 1
     wrapV: 1
     wrapW: 0
@@ -68,6 +69,7 @@ TextureImporter:
   textureFormatSet: 0
   ignorePngGamma: 0
   applyGammaDecoding: 0
+  cookieLightType: 1
   platformSettings:
   - serializedVersion: 3
     buildTarget: DefaultTexturePlatform
@@ -129,32 +131,170 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 1024
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: X Button
+      name: Xbox LT
       rect:
         serializedVersion: 2
-        x: 364
-        y: 170
-        width: 74
+        x: 315
+        y: 356
+        width: 57
         height: 73
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1a36ce0adbe83fa60800000000000000
-      internalID: 7706660332460860321
+      spriteID: 73ca7d40da856894b8480d5aa46d7a9b
+      internalID: -414129109
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: A Button
+      name: Xbox RT
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 356
+        width: 56
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6ff0711f7d198240bc9b37355943e89
+      internalID: -1575936652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Xbox L Stick
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 354
+        width: 75
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe9b1f204f6d01841b8c675a7c9523ef
+      internalID: -769985707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Xbox R Stick
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 354
+        width: 75
+        height: 78
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27b48b105301e714fba03366e321ebe9
+      internalID: 1864106594
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Xbox LB
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 366
+        width: 84
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9848afac75a37274ca8ecaf088e6686c
+      internalID: -1318424938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Xbox RB
+      rect:
+        serializedVersion: 2
+        x: 627
+        y: 366
+        width: 84
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8145d08ccbee7f4894f2b2fc3a44f13
+      internalID: -1372808162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Xbox D-Pad
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 170
+        width: 73
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bd9e9fe88d88ed4fab7e5351cb68e6a
+      internalID: 864490524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Xbox A
       rect:
         serializedVersion: 2
         x: 147
@@ -162,14 +302,119 @@ TextureImporter:
         width: 72
         height: 73
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b4805764d1261a20800000000000000
-      internalID: 3032648595230721206
+      spriteID: 5e357b2b8954c6d48b62ac366f11cd23
+      internalID: -330667313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Xbox B
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 170
+        width: 73
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7b92b103d4f0c047ac4df0e010a3815
+      internalID: 867973835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Xbox X
+      rect:
+        serializedVersion: 2
+        x: 364
+        y: 170
+        width: 73
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 846a2f65062237644b8cc6dba4bc3b06
+      internalID: -45312602
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Xbox Y
+      rect:
+        serializedVersion: 2
+        x: 473
+        y: 170
+        width: 73
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22c744604de1ea243bfe4c0271d84071
+      internalID: 87949686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Xbox Select
+      rect:
+        serializedVersion: 2
+        x: 582
+        y: 170
+        width: 73
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f5d03943b6325be45ab9e133e6b50664
+      internalID: 1579929783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Xbox Start
+      rect:
+        serializedVersion: 2
+        x: 690
+        y: 170
+        width: 73
+        height: 73
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 883ce9dd277598447b17648682b32f0f
+      internalID: 525055625
       vertices: []
       indices: 
       edges: []
@@ -184,6 +429,30 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Xbox RT: -1575936652
+      Xbox UI Buttons_14: -1152690759
+      Xbox Y: 87949686
+      Xbox LB: -1318424938
+      Xbox LT: -414129109
+      Xbox UI Buttons_11: 1801052552
+      Xbox D-Pad: 864490524
+      Xbox UI Buttons_0: 1625675483
+      Xbox UI Buttons_8: -1480767899
+      Xbox Start: 525055625
+      Xbox UI Buttons_1: 57603881
+      Xbox UI Buttons_15: -1771297052
+      Xbox A: -330667313
+      Xbox UI Buttons_7: -1803177273
+      Xbox UI Buttons_6: 400976131
+      Xbox L Stick: -769985707
+      Xbox B: 867973835
+      Xbox Select: 1579929783
+      Xbox UI Buttons_10: 353874299
+      Xbox R Stick: 1864106594
+      Xbox UI Buttons_4: -1813281755
+      Xbox RB: -1372808162
+      Xbox X: -45312602
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

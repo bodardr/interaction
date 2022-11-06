@@ -11,9 +11,11 @@ GameObject:
   - component: {fileID: 50424718136002811}
   - component: {fileID: 791437582255764375}
   - component: {fileID: 791437582255764374}
-  - component: {fileID: 50424718136002810}
   - component: {fileID: 791437582255764373}
   - component: {fileID: 5935035947750089494}
+  - component: {fileID: 1081915464306632295}
+  - component: {fileID: 7577856436651493417}
+  - component: {fileID: 7180390478016469639}
   m_Layer: 5
   m_Name: Interaction View
   m_TagString: Untagged
@@ -31,6 +33,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 50424719099004613}
   - {fileID: 50424719571459540}
@@ -82,20 +85,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 0
---- !u!114 &50424718136002810
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 50424718136002564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31f902063babd814882e7d235415d357, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  offset: {x: 0, y: 0}
 --- !u!114 &791437582255764373
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -108,10 +97,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95837e38bb832824ab3ad8172fa96463, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controlImage: {fileID: 791437582114866357}
-  promptText: {fileID: 50424719571459531}
-  keyboardIcon: {fileID: 21300000, guid: bcb19d0a893fb054c9fa86d7663daa85, type: 3}
-  gamepadIcon: {fileID: 3032648595230721206, guid: bd4ce8162c7908c429c578a79738485d, type: 3}
 --- !u!223 &5935035947750089494
 Canvas:
   m_ObjectHideFlags: 0
@@ -133,6 +118,76 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!225 &1081915464306632295
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50424718136002564}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
+--- !u!114 &7577856436651493417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50424718136002564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88e59a9bbd06ff44489cd0e4261e1f75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onStart: 2
+  controlsSetActive: 1
+  excludeFromPanel: 0
+  showAnimation:
+    transformationType: 0
+    direction: 0
+    value: {x: 0, y: 1}
+    duration: 0
+    delay: 0
+    ease: 0
+    loops: 0
+    loopType: 0
+  hideAnimation:
+    transformationType: 0
+    direction: 0
+    value: {x: 1, y: 0}
+    duration: 0
+    delay: 0
+    ease: 0
+    loops: 0
+    loopType: 0
+  hideAfterDelay: 0
+  hideDelay: 0
+  onShow:
+    m_PersistentCalls:
+      m_Calls: []
+  onHide:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7180390478016469639
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50424718136002564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad98544dc6904c4c903e9249c6e515bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  autoAssign: 1
+  canBeAutoAssigned: 1
+  bindingMethod: 0
+  boundObjectTypeName: InteractionPrompt, com.bodardr.interaction.runtime, Version=0.0.0.0,
+    Culture=neutral, PublicKeyToken=null
 --- !u!1 &50424719099004614
 GameObject:
   m_ObjectHideFlags: 0
@@ -144,6 +199,7 @@ GameObject:
   - component: {fileID: 50424719099004613}
   - component: {fileID: 50424719099004603}
   - component: {fileID: 791437582114866357}
+  - component: {fileID: 4363210215330180832}
   m_Layer: 5
   m_Name: Button Icon
   m_TagString: Untagged
@@ -161,6 +217,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 50424718136002811}
   m_RootOrder: 0
@@ -198,7 +255,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 3032648595230721206, guid: bd4ce8162c7908c429c578a79738485d, type: 3}
+  m_Sprite: {fileID: 3032648595230721206, guid: bd4ce8162c7908c429c578a79738485d,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -208,6 +266,46 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4363210215330180832
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50424719099004614}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d21da7d4958497e92217bb9fa2d2369, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  searchStrategy: 0
+  bindingBehavior: {fileID: 7180390478016469639}
+  getExpression:
+    path: InteractionPrompt.Interaction
+    assemblyQualifiedTypeNames:
+    - InteractionPrompt, com.bodardr.interaction.runtime, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    - Interaction, com.bodardr.interaction.runtime, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  setExpression:
+    path: Image.sprite
+    assemblyQualifiedTypeNames:
+    - UnityEngine.UI.Image, UnityEngine.UI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+    - UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+  invert: 0
+  trueValue:
+    objectRef: {fileID: 0}
+    json: 50248
+    typeStr: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    serializationType: 0
+  falseValue:
+    objectRef: {fileID: 0}
+    json: 50000
+    typeStr: UnityEngine.Sprite, UnityEngine.CoreModule, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    serializationType: 0
 --- !u!1 &50424719571459541
 GameObject:
   m_ObjectHideFlags: 0
@@ -220,6 +318,7 @@ GameObject:
   - component: {fileID: 50424719571459530}
   - component: {fileID: 50424719571459531}
   - component: {fileID: 791437581492686575}
+  - component: {fileID: 8846197159130355498}
   m_Layer: 5
   m_Name: Text
   m_TagString: Untagged
@@ -237,13 +336,14 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 50424718136002811}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 116.865005, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &50424719571459530
@@ -357,3 +457,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 2
   m_VerticalFit: 0
+--- !u!114 &8846197159130355498
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50424719571459541}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d50b05ea47cb4434b3ad457018284e0d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  searchStrategy: 0
+  bindingBehavior: {fileID: 7180390478016469639}
+  getExpression:
+    path: InteractionPrompt.Interaction.Text
+    assemblyQualifiedTypeNames:
+    - InteractionPrompt, com.bodardr.interaction.runtime, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    - Interaction, com.bodardr.interaction.runtime, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    - System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+  setExpression:
+    path: TextMeshProUGUI.text
+    assemblyQualifiedTypeNames:
+    - TMPro.TextMeshProUGUI, Unity.TextMeshPro, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    - System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089

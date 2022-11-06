@@ -5,7 +5,11 @@
     "Unity.TextMeshPro",
     "Unity.InputSystem",
     "com.bodardr.pooling",
-    "com.bodardr.utility.runtime"
+    "com.bodardr.utility.runtime",
+    "com.bodardr.databinding.runtime",
+    "com.bodardr.rooms.runtime",
+    "com.bodardr.saving",
+    "com.bodardr.ui.runtime"
   ],
   "includePlatforms": [],
   "excludePlatforms": [],

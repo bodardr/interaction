@@ -1,28 +1,40 @@
 ﻿using System;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using JetBrains.Annotations;
 using UnityEngine;
 
 [AddComponentMenu("Interaction/Interaction")]
-public abstract class Interaction : MonoBehaviour
+public abstract class Interaction : MonoBehaviour, INotifyPropertyChanged
 {
+    private string text;
     protected Interactor interactor;
-    protected virtual string InitialText { get; }
 
-    public string Text { get; set; } = "Interact";
+    [SerializeField]
+    private string initialText = "Interact";
 
-    protected void Awake()
+    public string Text
     {
-        Text = InitialText;
-        OnTextUpdated += UpdateText;
+        get => text;
+        set
+        {
+            if (text == value)
+                return;
+            
+            text = value;
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(nameof(Text)));
+        }
     }
 
-    private void OnDestroy()
-    {
-        OnTextUpdated = null;
-    }
+    public event PropertyChangedEventHandler PropertyChanged;
 
-    private void UpdateText(string value) => Text = value;
+    private void Start()
+    {
+        Text = initialText;
+    }
+    
     public virtual bool CanInteract(Interactor interactor) => true;
-
+    
     /// <summary>
     /// Fires the interaction
     /// </summary>
@@ -30,7 +42,4 @@ public abstract class Interaction : MonoBehaviour
     public abstract bool Interact(Interactor interactor);
 
     public void LiberateInteractor() => interactor.FreeFromInteraction();
-
-    protected void InvokeOnTextUpdated(string text) => OnTextUpdated?.Invoke(text);
-    public event Action<string> OnTextUpdated;
 }

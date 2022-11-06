@@ -3,8 +3,8 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-[CustomPropertyDrawer(typeof(InteractionElement))]
-public class InteractionElementDrawer : PropertyDrawer
+[CustomPropertyDrawer(typeof(InteractionEntry))]
+public class InteractionEntryDrawer : PropertyDrawer
 {
     public override VisualElement CreatePropertyGUI(SerializedProperty property)
     {
