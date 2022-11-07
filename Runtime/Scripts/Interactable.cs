@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Bodardr.UI.Runtime;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -20,7 +21,7 @@ public class Interactable : MonoBehaviour
     [Header("Targets")]
     [SerializeField]
     private Transform customTarget;
-
+    
     [SerializeField]
     private bool customUpdateFrequency = false;
 
