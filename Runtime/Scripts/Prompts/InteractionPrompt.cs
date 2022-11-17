@@ -1,10 +1,6 @@
-using System.Collections;
 using System.ComponentModel;
-using Bodardr.Databinding.Runtime;
 using Bodardr.UI;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 [RequireComponent(typeof(UIView))]
 [AddComponentMenu("Interaction/Prompts/Interaction Prompt")]

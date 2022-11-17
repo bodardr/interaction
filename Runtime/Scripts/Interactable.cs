@@ -1,6 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using Bodardr.UI.Runtime;
+using Bodardr.Utility.Runtime;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -8,6 +8,8 @@ using UnityEngine.Serialization;
 [AddComponentMenu("Interaction/Interactable")]
 public class Interactable : MonoBehaviour
 {
+    private const float defaultUpdateFrequency = 0.3f;
+    
     private Interactor interactor;
     private SmartCoroutine updateCoroutine;
 
@@ -22,12 +24,13 @@ public class Interactable : MonoBehaviour
     [SerializeField]
     private Transform customTarget;
     
+    [UsedImplicitly]
     [SerializeField]
-    private bool customUpdateFrequency = false;
+    private bool useCustomUpdateFrequency = false;
 
-    [ShowIf(nameof(customUpdateFrequency))]
+    [ShowIf(nameof(useCustomUpdateFrequency))]
     [SerializeField]
-    private float updateFrequency = 0.3f;
+    private float customUpdateFrequency = defaultUpdateFrequency;
 
     public Transform CustomTarget => customTarget;
 
@@ -38,7 +41,7 @@ public class Interactable : MonoBehaviour
 
     private IEnumerator UpdateInteractionsCoroutine()
     {
-        var waitByUpdateFrequency = new WaitForSeconds(updateFrequency);
+        var waitByUpdateFrequency = new WaitForSeconds(useCustomUpdateFrequency ? customUpdateFrequency : defaultUpdateFrequency);
         while (isActiveAndEnabled)
         {
             primaryInteractions.Sort((x, y) => x.weight.CompareTo(y.weight));
